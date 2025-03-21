@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="AMS.css">
+</head>
+<body>
+  
+    <div class="container">
+        <div class="login-container" id="loginContainer">
+       
+            <h1>AMS BY 47</h1>
+            <div class="login-options">
+                <button onclick="showLogin('student')">Student Login</button>
+                <button onclick="showLogin('teacher')">Teacher Login</button>
+                <button onclick="showLogin('admin')">Admin Login</button>
+            </div>
+            
+            <div id="loginForms">
+    
+                <form id="studentLogin" class="login-form hidden">
+                    <h2>Student Login</h2>
+                    <input type="text" id="studentRegNo" placeholder="Registration Number" required>
+                    <button type="submit">Login</button>
+                </form>
+
+            
+                <form id="teacherLogin" class="login-form hidden">
+                    <h2>Teacher Login</h2>
+                    <input type="text" id="teacherUsername" placeholder="Username (e.g., SRKR-0001)" required>
+                    <input type="password" id="teacherPassword" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+
+             
+                <form id="adminLogin" class="login-form hidden">
+                    <h2>Admin Login</h2>
+                    <input type="text" id="adminUsername" placeholder="Username" required>
+                    <input type="password" id="adminPassword" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+ 
+        <div id="adminDashboard" class="dashboard hidden">
+            <h2>Admin Dashboard</h2>
+            <div class="admin-controls">
+                <div class="add-student-form">
+                    <h3>Add New Student</h3>
+                    <input type="text" id="newStudentRegNo" placeholder="Registration Number">
+                    <input type="text" id="newStudentName" placeholder="Student Name">
+                    <button onclick="addStudent()">Add Student</button>
+                </div>
+                <div class="student-list">
+                    <h3>Students List</h3>
+                    <ul id="studentsList"></ul>
+                </div>
+            </div>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+     
+        <div id="teacherDashboard" class="dashboard hidden">
+            <h2>Teacher Dashboard</h2>
+            <div class="attendance-controls">
+                <div class="attendance-header">
+                    <input type="date" id="attendanceDate" required>
+                    <select id="periodSelect">
+                        <option value="1">Period 1</option>
+                        <option value="2">Period 2</option>
+                        <option value="3">Period 3</option>
+                        <option value="4">Period 4</option>
+                    </select>
+                </div>
+                <div class="absentee-input">
+                    <h3>Mark Absentees</h3>
+                    <p>Total Students: <span id="totalStudents">0</span></p>
+                    <input type="text" id="absenteeNumbers" placeholder="Enter absent student numbers (comma-separated)">
+                    <p class="input-help">Example: S001, S003, S005</p>
+                </div>
+                <button onclick="submitAttendance()">Submit Attendance</button>
+            </div>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+    
+        <div id="studentDashboard" class="dashboard hidden">
+            <h2>Student Dashboard</h2>
+            <div class="attendance-info">
+                <h3>Attendance Summary</h3>
+                <p>Registration Number: <span id="studentRegNoDisplay"></span></p>
+                <p>Overall Attendance: <span id="attendancePercentage">0</span>%</p>
+                <div id="periodWiseAttendance"></div>
+            </div>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <script src="AMS.js"></script>
+</body>
+</html>
